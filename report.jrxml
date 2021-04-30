@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="TalpaBoxReport">
+    <property name="net.sf.jasperreports.export.xls.sheet.names.all"
+              value="Sheet A/Sheet B/Sheet C" />
+    <style name="Default" isDefault="true" pdfEncoding="Cp1251" pdfFontName="arial.ttf"/>
+
+    <parameter name="TITLE" class="java.lang.String"/>
+    <parameter name="NAME" class="java.lang.String"/>
+    <parameter name="DISCIPLINE" class="java.lang.String"/>
+    <parameter name="ABSENCE" class="java.lang.String"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="discipline" class="java.lang.String"/>
+    <field name="absence" class="java.lang.Integer"/>
+    <title>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="555" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$P{TITLE}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="20">
+            <textField>
+                <reportElement mode="Opaque" x="0" y="0"
+                               width="183" height="20" backcolor="#F8F8F8"
+                               uuid="6dcf04a6-2d50-438c-a862-530dba89da06"/>
+                <box>
+                    <pen       lineWidth="1.0"/>
+
+                </box>
+                <textElement textAlignment="Center"
+                             verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{NAME}]]> </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement mode="Opaque" x="183" y="0"
+                               width="183" height="20" backcolor="#F8F8F8"
+                               uuid="81c1007d-728f-49fc-9d68-2e081df49fe9"/>
+                <box>
+                    <pen       lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center"
+                             verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{DISCIPLINE}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement mode="Opaque" x="366" y="0"
+                               width="183" height="20" backcolor="#F8F8F8"
+                               uuid="1ca79763-a681-4487-bb96-9e7e30e2d4fb"/>
+                <box>
+                    <pen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center"
+                             verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ABSENCE}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="183" y="0" width="183" height="20" uuid="1adc41ce-7c09-46fe-960a-dff145ad7e50"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{discipline}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="0" width="183" height="20" uuid="2f5d59ad-6924-492a-b5c4-f9705cc23650"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="366" y="0" width="183" height="20" uuid="7f824851-c67d-41c9-ba98-6ab57aa00d47"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{absence}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>
