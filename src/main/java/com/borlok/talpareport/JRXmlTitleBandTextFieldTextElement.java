@@ -52,8 +52,6 @@ public class JRXmlTitleBandTextFieldTextElement extends JRXmlAbstractBandTextFie
         return this;
     }
 
-
-
     @Override
     public JRXmlTitleBandTextField build() {
         try {

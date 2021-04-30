@@ -7,5 +7,12 @@ public abstract class JRXmlAbstractBandTextFieldBox<T> {
         this.parentElement = parentElement;
     }
 
+    public abstract JRXmlAbstractBandTextFieldBoxSettingBuilder<? extends JRXmlAbstractBandTextFieldBox<T>> addBoxSettingBuilder();
+    public abstract JRXmlAbstractBandTextFieldBoxPenBuilder<? extends JRXmlAbstractBandTextFieldBox<T>> addBoxPenBuilder();
+    public abstract JRXmlAbstractBandTextFieldBoxPenBuilder<? extends JRXmlAbstractBandTextFieldBox<T>> addBoxRightPenBuilder();
+    public abstract JRXmlAbstractBandTextFieldBoxPenBuilder<? extends JRXmlAbstractBandTextFieldBox<T>> addBoxLeftPenBuilder();
+    public abstract JRXmlAbstractBandTextFieldBoxPenBuilder<? extends JRXmlAbstractBandTextFieldBox<T>> addBoxTopPenBuilder();
+    public abstract JRXmlAbstractBandTextFieldBoxPenBuilder<? extends JRXmlAbstractBandTextFieldBox<T>> addBoxBottomPenBuilder();
+
     public abstract T build();
 }

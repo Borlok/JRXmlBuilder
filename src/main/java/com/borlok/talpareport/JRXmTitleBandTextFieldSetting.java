@@ -5,7 +5,7 @@ import java.io.IOException;
 import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
 
 public class JRXmTitleBandTextFieldSetting extends JRXmlAbstractBandTextFieldSetting<JRXmlTitleBandTextField> {
-
+    //TODO Начать отсюда
     public JRXmTitleBandTextFieldSetting(JRXmlTitleBandTextField parentElement) {
         super(parentElement);
     }

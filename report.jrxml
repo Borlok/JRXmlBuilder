@@ -31,8 +31,11 @@
                                width="183" height="20" backcolor="#F8F8F8"
                                uuid="6dcf04a6-2d50-438c-a862-530dba89da06"/>
                 <box>
-                    <pen       lineWidth="1.0"/>
-
+                    <pen        lineWidth="1.0"/>
+                    <leftPen lineStyle="Dotted" lineColor="red"/>
+                    <rightPen />
+                    <bottomPen />
+                    <topPen/>
                 </box>
                 <textElement textAlignment="Center"
                              verticalAlignment="Middle">

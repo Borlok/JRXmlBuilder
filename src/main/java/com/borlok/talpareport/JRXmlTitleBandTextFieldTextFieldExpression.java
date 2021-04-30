@@ -17,6 +17,7 @@ public class JRXmlTitleBandTextFieldTextFieldExpression extends JRXmlAbstractBan
         return this;
     }
 
+    @Override
     public JRXmlTitleBandTextFieldTextFieldExpression addCDATA(String data) {
         try {
             jrXmlWriteHelper.writeCDATA(data);
@@ -26,6 +27,7 @@ public class JRXmlTitleBandTextFieldTextFieldExpression extends JRXmlAbstractBan
         return this;
     }
 
+    @Override
     public JRXmlTitleBandTextFieldTextFieldExpression addCDATAParameter(String data) {
         try {
             jrXmlWriteHelper.writeCDATA("$P{" + data + "}");
@@ -35,6 +37,7 @@ public class JRXmlTitleBandTextFieldTextFieldExpression extends JRXmlAbstractBan
         return this;
     }
 
+    @Override
     public JRXmlTitleBandTextFieldTextFieldExpression addCDATAField(String data) {
         try {
             jrXmlWriteHelper.writeCDATA("$F{" + data + "}");
