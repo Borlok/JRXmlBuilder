@@ -12,7 +12,7 @@ public class JRXmlColumnHeaderBand extends JRXmlAbstractBand<JRXmlColumnHeader>{
     }
 
     @Override
-    public JRXmlAbstractBandTextFieldBuilder<JRXmlColumnHeaderBand> addTextField() {
+    public JRXmlAbstractBandTextFieldBuilder<JRXmlColumnHeaderBand> addTextFieldBuilder() {
         return new JRXmlColumnHeaderBandTextFieldBuilder(this);
     }
 

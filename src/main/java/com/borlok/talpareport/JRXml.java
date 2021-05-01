@@ -61,6 +61,10 @@ public class JRXml {
         return new JRXmlTitleBuilder(this);
     }
 
+    public JRXmlColumnHeaderBuilder addColumnHeaderBuilder() {
+        return new JRXmlColumnHeaderBuilder(this);
+    }
+
     public JRXml toJRXml() {
         try {
             jrXmlWriteHelper.closeElement();

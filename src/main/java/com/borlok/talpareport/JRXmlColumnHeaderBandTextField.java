@@ -1,38 +1,48 @@
 package com.borlok.talpareport;
 
+import java.io.IOException;
+
+import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
+
 public class JRXmlColumnHeaderBandTextField extends JRXmlAbstractBandTextField<JRXmlColumnHeaderBand> {
 //TODO Not realized
     public JRXmlColumnHeaderBandTextField(JRXmlColumnHeaderBand parentElement) {
         super(parentElement);
+        jrXmlWriteHelper.startElement("columnHeader");
     }
 
     @Override
     public JRXmlAbstractBandTextFieldSettingBuilder<JRXmlColumnHeaderBandTextField> addTextFieldSettingBuilder() {
-        return null;
+        return new JRXmlColumnHeaderBandTextFieldSettingBuilder(this);
     }
 
     @Override
     public JRXmlAbstractBandTextFieldReportElementBuilder<JRXmlColumnHeaderBandTextField> addReportElementBuilder() {
-        return null;
+        return new JRXmlColumnHeaderBandTextFieldReportElementBuilder(this);
     }
 
     @Override
     public JRXmlAbstractBandTextFieldBoxBuilder<JRXmlColumnHeaderBandTextField> addBoxBuilder() {
-        return null;
+        return new JRXmlColumnHeaderBandTextFieldBoxBuilder(this);
     }
 
     @Override
     public JRXmlAbstractBandTextFieldTextElementBuilder<JRXmlColumnHeaderBandTextField> addTextElementBuilder() {
-        return null;
+        return new JRXmlColumnHeaderBandTextFieldTextElementBuilder(this);
     }
 
     @Override
     public JRXmlAbstractBandTextFieldTextFieldExpressionBuilder<JRXmlColumnHeaderBandTextField> addTextFieldExpressionBuilder() {
-        return null;
+        return new JRXmlColumnHeaderBandTextFieldTextFieldExpressionBuilder(this);
     }
 
     @Override
     public JRXmlColumnHeaderBand build() {
+        try {
+            jrXmlWriteHelper.closeElement();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return parentElement;
     }
 }

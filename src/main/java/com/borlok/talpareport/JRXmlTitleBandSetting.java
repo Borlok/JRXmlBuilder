@@ -10,6 +10,4 @@ public class JRXmlTitleBandSetting extends JRXmlAbstractBandSetting<JRXmlTitleBa
     public JRXmlTitleBand build() {
         return parentElement;
     }
-
-
 }

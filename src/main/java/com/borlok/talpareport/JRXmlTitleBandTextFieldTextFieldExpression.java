@@ -8,43 +8,6 @@ public class JRXmlTitleBandTextFieldTextFieldExpression extends JRXmlAbstractBan
 
     public JRXmlTitleBandTextFieldTextFieldExpression(JRXmlTitleBandTextField parentElement) {
         super(parentElement);
-        jrXmlWriteHelper.startElement("textFieldExpression");
-    }
-
-    @Override
-    public JRXmlTitleBandTextFieldTextFieldExpression addClass(String className) {
-        jrXmlWriteHelper.addAttribute("class", className);
-        return this;
-    }
-
-    @Override
-    public JRXmlTitleBandTextFieldTextFieldExpression addCDATA(String data) {
-        try {
-            jrXmlWriteHelper.writeCDATA(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return this;
-    }
-
-    @Override
-    public JRXmlTitleBandTextFieldTextFieldExpression addCDATAParameter(String data) {
-        try {
-            jrXmlWriteHelper.writeCDATA("$P{" + data + "}");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return this;
-    }
-
-    @Override
-    public JRXmlTitleBandTextFieldTextFieldExpression addCDATAField(String data) {
-        try {
-            jrXmlWriteHelper.writeCDATA("$F{" + data + "}");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return this;
     }
 
     @Override

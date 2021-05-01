@@ -3,9 +3,10 @@ package com.borlok;
 import java.io.*;
 import java.util.*;
 
+import com.borlok.talpareport.JRXmlBuilder;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRXmlWriteHelper;
+import net.sf.jasperreports.engine.type.HorizontalTextAlignEnum;
 
 import javax.swing.*;
 
@@ -32,36 +33,49 @@ public class Generator {
 
         UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 
-        try {
-        JRXmlWriteHelper helper = new JRXmlWriteHelper(new FileWriter(to));
-            helper.writeCDATA("$P{NAME}");
-            helper.getUnderlyingWriter().flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        JRXmlBuilder.builder()
-//                .setPathForJRXlmSave(pathToPattern)
-//                .addHeaderBuilder().builder()
-//                                    .addReportName("Talpa")
-//                                    .addColumnCount(3)
-//                                    .addLeftMargin(20)
-//                                    .addRightMargin(10)
-//                                    .addTopMargin(10)
-//                                    .addBottomMargin(10)
-//                                    .addColumnWidth(178)
-//                                    .addColumnSpacing(5)
-//                                    .build()
-//                .addStyleBuilder().builder()
-//                                    .addName("Default")
-//                                    .addIsDefault(true)
-//                                    .build()
-//                .addParameter("NAME", String.class)
-//                .addField("name", String.class)
-//                .addTitleBuilder().builder()
-//                                    .addBandBuilder().builder()
-//                .build()
-//                .build()
-//                .build();
+        JRXmlBuilder.builder()
+                .setPathForJRXlmSave(pathToPattern)
+                                .addHeaderBuilder().builder()
+                                                .addReportName("Talpa")
+                                                .addColumnCount(3)
+                                                .addLeftMargin(20)
+                                                .addRightMargin(10)
+                                                .addTopMargin(10)
+                                                .addBottomMargin(10)
+                                                .addColumnWidth(178)
+                                                .addColumnSpacing(5)
+                                .build()
+                                .addStyleBuilder().builder()
+                                                .addName("Default")
+                                                .addIsDefault(true)
+                                .build()
+                .addParameter("TITLE", String.class)
+                .addParameter("NAME", String.class)
+                .addParameter("DISCIPLINE", String.class)
+                .addParameter("ABSENCE", Integer.class)
+                .addField("name", String.class)
+                .addField("discipline", String.class)
+                .addField("absence", Integer.class)
+                .addTitleBuilder().builder()
+                                .addBandBuilder().builder()
+                                                .addBandSettingBuilder().builder()
+                                                .build()
+                                                .addTextFieldBuilder().builder()
+                                                                .addReportElementBuilder().builder()
+                                                                                .addX(0).addY(0).addWidth(555).addHeight(20)
+                                                                .build()
+                                                                .addTextElementBuilder().builder()
+                                                                                .addTextElementSettingBuilder().builder()
+                                                                                .addTextAlignment(HorizontalTextAlignEnum.CENTER)
+                                                                .build()
+                                                .build()
+                                                .addTextFieldExpressionBuilder().builder()
+                                                                .addCDATAParameter("TITLE")
+                                                .build()
+                                .build()
+                .build()
+                .build()
+                .build();
 
 
 //        JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);

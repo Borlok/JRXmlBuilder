@@ -7,6 +7,6 @@ public abstract class JRXmlAbstractBand<T> {
         this.parentElement = parentElement;
     }
     public abstract JRXmlAbstractBandSettingBuilder<? extends JRXmlAbstractBand<T>> addBandSettingBuilder();
-    public abstract JRXmlAbstractBandTextFieldBuilder<? extends JRXmlAbstractBand<T>> addTextField();
+    public abstract JRXmlAbstractBandTextFieldBuilder<? extends JRXmlAbstractBand<T>> addTextFieldBuilder();
     public abstract T build();
 }

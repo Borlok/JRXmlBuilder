@@ -10,5 +10,4 @@ public class JRXmlTitleBandTextFieldTextElementBuilder extends JRXmlAbstractBand
     public JRXmlAbstractBandTextFieldTextElement<JRXmlTitleBandTextField> builder() {
         return new JRXmlTitleBandTextFieldTextElement(parentElement);
     }
-
 }

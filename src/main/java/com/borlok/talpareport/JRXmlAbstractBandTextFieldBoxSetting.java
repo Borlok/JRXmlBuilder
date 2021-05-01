@@ -1,5 +1,7 @@
 package com.borlok.talpareport;
 
+import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
+
 public abstract class JRXmlAbstractBandTextFieldBoxSetting<T> {
     protected T parentElement;
 
@@ -7,11 +9,29 @@ public abstract class JRXmlAbstractBandTextFieldBoxSetting<T> {
         this.parentElement = parentElement;
     }
 
-    public abstract JRXmlTitleBandTextFieldBoxSetting addPadding(Integer padding);
-    public abstract JRXmlTitleBandTextFieldBoxSetting addLeftPadding(Integer leftPadding);
-    public abstract JRXmlTitleBandTextFieldBoxSetting addRightPadding(Integer rightPadding);
-    public abstract JRXmlTitleBandTextFieldBoxSetting addTopPadding(Integer topPadding);
-    public abstract JRXmlTitleBandTextFieldBoxSetting addBottomPadding(Integer bottomPadding);
+    public JRXmlAbstractBandTextFieldBoxSetting<T> addPadding(Integer padding) {
+        jrXmlWriteHelper.addAttribute("padding", padding);
+        return this;
+    }
 
+    public JRXmlAbstractBandTextFieldBoxSetting<T> addLeftPadding(Integer leftPadding) {
+        jrXmlWriteHelper.addAttribute("leftPadding", leftPadding);
+        return this;
+    }
+
+    public JRXmlAbstractBandTextFieldBoxSetting<T> addRightPadding(Integer rightPadding) {
+        jrXmlWriteHelper.addAttribute("rightPadding", rightPadding);
+        return this;
+    }
+
+    public JRXmlAbstractBandTextFieldBoxSetting<T> addTopPadding(Integer topPadding) {
+        jrXmlWriteHelper.addAttribute("topPadding", topPadding);
+        return this;
+    }
+
+    public JRXmlAbstractBandTextFieldBoxSetting<T> addBottomPadding(Integer bottomPadding) {
+        jrXmlWriteHelper.addAttribute("bottomPadding", bottomPadding);
+        return this;
+    }
     public abstract T build();
 }

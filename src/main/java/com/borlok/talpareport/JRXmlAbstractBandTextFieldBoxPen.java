@@ -2,6 +2,8 @@ package com.borlok.talpareport;
 
 import net.sf.jasperreports.engine.type.LineStyleEnum;
 
+import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
+
 public abstract class JRXmlAbstractBandTextFieldBoxPen<T> {
     protected T parentElement;
 
@@ -9,9 +11,19 @@ public abstract class JRXmlAbstractBandTextFieldBoxPen<T> {
         this.parentElement = parentElement;
     }
 
-    public abstract JRXmlAbstractBandTextFieldBoxPen<T> addLineWidth(Double lineWidth);
-    public abstract JRXmlAbstractBandTextFieldBoxPen<T> addLineStyle(LineStyleEnum lineStyle);
-    public abstract JRXmlAbstractBandTextFieldBoxPen<T> addLineColor(String lineColor);
+    public JRXmlAbstractBandTextFieldBoxPen<T> addLineWidth(Double lineWidth) {
+        jrXmlWriteHelper.addAttribute("lineWidth", lineWidth);
+        return this;
+    }
 
+    public JRXmlAbstractBandTextFieldBoxPen<T> addLineStyle(LineStyleEnum lineStyle) {
+        jrXmlWriteHelper.addAttribute("lineStyle", lineStyle.getName());
+        return this;
+    }
+
+    public JRXmlAbstractBandTextFieldBoxPen<T> addLineColor(String lineColor) {
+        jrXmlWriteHelper.addAttribute("lineColor", lineColor);
+        return this;
+    }
     public abstract T build();
 }

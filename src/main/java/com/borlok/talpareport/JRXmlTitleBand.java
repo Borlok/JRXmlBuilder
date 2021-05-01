@@ -16,7 +16,7 @@ public class JRXmlTitleBand extends JRXmlAbstractBand<JRXmlTitle>{
         return new JRXmlTitleBandSettingBuilder(this);
     }
 
-    public JRXmlAbstractBandTextFieldBuilder<JRXmlTitleBand> addTextField() {
+    public JRXmlAbstractBandTextFieldBuilder<JRXmlTitleBand> addTextFieldBuilder() {
         return new JRXmlTitleBandTextFieldBuilder(this);
     }
 
