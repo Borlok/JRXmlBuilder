@@ -9,7 +9,6 @@ public class JRXmlTitleBand extends JRXmlAbstractBand<JRXmlTitle>{
 
     public JRXmlTitleBand(JRXmlTitle parentElement) {
         super(parentElement);
-        jrXmlWriteHelper.startElement("band");
     }
 
     public JRXmlAbstractBandSettingBuilder<JRXmlTitleBand> addBandSettingBuilder () {

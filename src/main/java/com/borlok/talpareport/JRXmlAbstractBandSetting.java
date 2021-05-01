@@ -11,7 +11,7 @@ public abstract class JRXmlAbstractBandSetting<T> {
         this.parentElement = parentElement;
     }
 
-    public JRXmlAbstractBandSetting<T> addHeight(Double height) {
+    public JRXmlAbstractBandSetting<T> addHeight(Integer height) {
         jrXmlWriteHelper.addAttribute("height", height);
         return this;
     }

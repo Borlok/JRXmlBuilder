@@ -7,6 +7,8 @@ import com.borlok.talpareport.JRXmlBuilder;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.type.HorizontalTextAlignEnum;
+import net.sf.jasperreports.engine.type.ModeEnum;
+import net.sf.jasperreports.engine.type.VerticalTextAlignEnum;
 
 import javax.swing.*;
 
@@ -73,10 +75,32 @@ public class Generator {
                                                                 .addCDATAParameter("TITLE")
                                                 .build()
                                 .build()
+               .build()
+                .build()
+                .addColumnHeaderBuilder().builder()
+                .addBandBuilder().builder()
+                .addBandSettingBuilder().builder()
+                .addHeight(20)
+                .build()
+                .addTextFieldBuilder().builder()
+                .addReportElementBuilder().builder().addX(0).addY(0).addMode(ModeEnum.OPAQUE).addWidth(183).addHeight(20)
+                .addBackcolor("#f8f8f8").build()
+                .addBoxBuilder().builder()
+                .addBoxPenBuilder().builder()
+                .addLineWidth(1).build().build()
+                .addTextElementBuilder().builder()
+                .addTextElementSettingBuilder().builder()
+                .addTextAlignment(HorizontalTextAlignEnum.CENTER)
+                .addVerticalAlignment(VerticalTextAlignEnum.MIDDLE).build()
+                .addFontBuilder().builder()
+                .addIsBold(true).build()
+                .build()
+                .addTextFieldExpressionBuilder().builder()
+                .addCDATAParameter("NAME").build()
+                .build()
                 .build()
                 .build()
                 .build();
-
 
 //        JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
 //        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);

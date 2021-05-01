@@ -19,4 +19,20 @@
 			</textField>
 		</band>
 	</title>
+	<columnHeader>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" mode="Opaque" width="183" height="20" backcolor="#f8f8f8"/>
+				<box>
+					<pen lineWidth="1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$P{NAME}]]>
+				</textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
 </jasperReport>

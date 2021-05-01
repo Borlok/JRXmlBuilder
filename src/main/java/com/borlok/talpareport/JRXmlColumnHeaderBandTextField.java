@@ -8,7 +8,7 @@ public class JRXmlColumnHeaderBandTextField extends JRXmlAbstractBandTextField<J
 //TODO Not realized
     public JRXmlColumnHeaderBandTextField(JRXmlColumnHeaderBand parentElement) {
         super(parentElement);
-        jrXmlWriteHelper.startElement("columnHeader");
+        jrXmlWriteHelper.startElement("textField");
     }
 
     @Override

@@ -1,5 +1,9 @@
 package com.borlok.talpareport;
 
+import java.io.IOException;
+
+import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
+
 public class JRXmlColumnHeaderBand extends JRXmlAbstractBand<JRXmlColumnHeader>{
 
     public JRXmlColumnHeaderBand(JRXmlColumnHeader parentElement) {
@@ -18,6 +22,11 @@ public class JRXmlColumnHeaderBand extends JRXmlAbstractBand<JRXmlColumnHeader>{
 
     @Override
     public JRXmlColumnHeader build() {
+        try {
+            jrXmlWriteHelper.closeElement();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return parentElement;
     }
 }
