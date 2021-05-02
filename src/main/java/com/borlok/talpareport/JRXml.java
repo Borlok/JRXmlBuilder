@@ -5,6 +5,7 @@ import net.sf.jasperreports.engine.util.JRXmlWriteHelper;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Map;
 
 public class JRXml {
     protected static JRXmlWriteHelper jrXmlWriteHelper;
@@ -33,7 +34,7 @@ public class JRXml {
         return new JRXmlStyleBuilder(this);
     }
 
-    public JRXml addParameter(String value, Class<?> classOfValue) { //TODO addParameters
+    public JRXml addParameter(String value, Class<?> classOfValue) {
         try {
             jrXmlWriteHelper.startElement("parameter");
             jrXmlWriteHelper.addAttribute("name", value);
@@ -45,12 +46,40 @@ public class JRXml {
         return this;
     }
 
-    public JRXml addField(String value, Class<?> classOfValue) {//TODO addFields
+    public JRXml addParameters(Map<String, Class<?>> parametersMap) {
+        try {
+            for (Map.Entry<String, Class<?>> parameter : parametersMap.entrySet()) {
+                jrXmlWriteHelper.startElement("parameter");
+                jrXmlWriteHelper.addAttribute("name", parameter.getKey());
+                jrXmlWriteHelper.addAttribute("class", parameter.getValue().getName());
+                jrXmlWriteHelper.closeElement();
+            }
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public JRXml addField(String value, Class<?> classOfValue) {
         try {
             jrXmlWriteHelper.startElement("field");
             jrXmlWriteHelper.addAttribute("name", value);
             jrXmlWriteHelper.addAttribute("class", classOfValue.getName());
             jrXmlWriteHelper.closeElement();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public JRXml addFields(Map<String, Class<?>> fieldsMap) {
+        try {
+            for (Map.Entry<String, Class<?>> field : fieldsMap.entrySet()) {
+                jrXmlWriteHelper.startElement("field");
+                jrXmlWriteHelper.addAttribute("name", field.getKey());
+                jrXmlWriteHelper.addAttribute("class", field.getValue().getName());
+                jrXmlWriteHelper.closeElement();
+            }
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }

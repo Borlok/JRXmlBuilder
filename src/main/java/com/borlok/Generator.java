@@ -3,15 +3,12 @@ package com.borlok;
 import java.io.*;
 import java.util.*;
 
-import com.borlok.talpareport.JRReport;
 import com.borlok.talpareport.JRXmlBuilder;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.type.HorizontalTextAlignEnum;
 import net.sf.jasperreports.engine.type.ModeEnum;
 import net.sf.jasperreports.engine.type.SplitTypeEnum;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import javax.swing.*;
 
@@ -38,6 +35,17 @@ public class Generator {
 
         UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 
+        Map<String, Class<?>> parametersMap = new HashMap<>();
+        parametersMap.put("TITLE", String.class);
+        parametersMap.put("NAME", String.class);
+        parametersMap.put("DISCIPLINE", String.class);
+        parametersMap.put("ABSENCE", String.class);
+
+        Map<String, Class<?>> fieldsMap = new HashMap<>();
+        fieldsMap.put("name", String.class);
+        fieldsMap.put("discipline", String.class);
+        fieldsMap.put("absence", Integer.class);
+
         JRXmlBuilder.builder()
                 .setPathForJRXlmSave(pathToPattern)
                 .addHeader().builder()
@@ -54,13 +62,8 @@ public class Generator {
                 .addName("Default")
                 .addIsDefault(true)
                 .build()
-                .addParameter("TITLE", String.class)
-                .addParameter("NAME", String.class)
-                .addParameter("DISCIPLINE", String.class)
-                .addParameter("ABSENCE", String.class)
-                .addField("name", String.class)
-                .addField("discipline", String.class)
-                .addField("absence", Integer.class)
+                .addParameters(parametersMap)
+                .addFields(fieldsMap)
                 .addTitle().builder()
                     .addBand().builder()
                         .addBandSetting().builder().addHeight(20).build()
