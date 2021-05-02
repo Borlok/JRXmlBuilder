@@ -4,16 +4,16 @@ import java.io.IOException;
 
 import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
 
-public class JRXmlColumnHeader {
-    private JRXml jrXml;
+public class JRXmlColumnHeader extends JRXmlBodyField<JRXml>{
 
-    public JRXmlColumnHeader(JRXml jrXml) {
-        this.jrXml = jrXml;
+    public JRXmlColumnHeader(JRXml parentElement) {
+        super(parentElement);
         jrXmlWriteHelper.startElement("columnHeader");
     }
 
-    public JRXmlAbstractBandBuilder<JRXmlColumnHeader> addBandBuilder() {
-        return new JRXmlColumnHeaderBandBuilder(this);
+    @Override
+    public JRXmlAbstractBandBuilder<JRXmlBodyField<JRXml>> addBand() {
+        return new JRXmlBandBuilder(this);
     }
 
     public JRXml build() {
@@ -22,6 +22,6 @@ public class JRXmlColumnHeader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return jrXml;
+        return parentElement;
     }
 }

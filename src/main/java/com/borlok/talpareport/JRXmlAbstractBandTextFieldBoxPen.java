@@ -11,7 +11,7 @@ public abstract class JRXmlAbstractBandTextFieldBoxPen<T> {
         this.parentElement = parentElement;
     }
 
-    public JRXmlAbstractBandTextFieldBoxPen<T> addLineWidth(Integer lineWidth) {
+    public JRXmlAbstractBandTextFieldBoxPen<T> addLineWidth(Number lineWidth) {
         jrXmlWriteHelper.addAttribute("lineWidth", lineWidth);
         return this;
     }

@@ -4,12 +4,12 @@
 	<parameter name="TITLE" class="java.lang.String"/>
 	<parameter name="NAME" class="java.lang.String"/>
 	<parameter name="DISCIPLINE" class="java.lang.String"/>
-	<parameter name="ABSENCE" class="java.lang.Integer"/>
+	<parameter name="ABSENCE" class="java.lang.String"/>
 	<field name="name" class="java.lang.String"/>
 	<field name="discipline" class="java.lang.String"/>
 	<field name="absence" class="java.lang.Integer"/>
 	<title>
-		<band>
+		<band height="20">
 			<textField>
 				<reportElement x="0" y="0" width="555" height="20"/>
 				<textElement textAlignment="Center"/>
@@ -22,17 +22,66 @@
 	<columnHeader>
 		<band height="20">
 			<textField>
-				<reportElement x="0" y="0" mode="Opaque" width="183" height="20" backcolor="#f8f8f8"/>
-				<box>
-					<pen lineWidth="1"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="0" y="0" width="555" height="20"/>
+				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression>
 					<![CDATA[$P{NAME}]]>
 				</textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="183" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$P{DISCIPLINE}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="366" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$P{ABSENCE}]]>
+				</textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="183" y="0" width="183" height="20"/>
+				<box>
+					<pen lineWidth="1"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression>
+					<![CDATA[$F{discipline}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="183" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression>
+					<![CDATA[$F{name}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="0" width="183" height="20"/>
+				<box>
+					<pen lineWidth="1"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression>
+					<![CDATA[$F{absence}]]>
+				</textFieldExpression>
+			</textField>
+		</band>
+	</detail>
 </jasperReport>

@@ -9,7 +9,7 @@ public abstract class JRXmlAbstractBand<T> {
         this.parentElement = parentElement;
         jrXmlWriteHelper.startElement("band");
     }
-    public abstract JRXmlAbstractBandSettingBuilder<? extends JRXmlAbstractBand<T>> addBandSettingBuilder();
-    public abstract JRXmlAbstractBandTextFieldBuilder<? extends JRXmlAbstractBand<T>> addTextFieldBuilder();
+    public abstract JRXmlAbstractBandSettingBuilder<? extends JRXmlAbstractBand<T>> addBandSetting();
+    public abstract JRXmlAbstractBandTextFieldBuilder<? extends JRXmlAbstractBand<T>> addTextField();
     public abstract T build();
 }

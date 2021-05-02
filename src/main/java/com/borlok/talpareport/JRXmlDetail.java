@@ -4,11 +4,10 @@ import java.io.IOException;
 
 import static com.borlok.talpareport.JRXml.jrXmlWriteHelper;
 
-public class JRXmlTitle extends JRXmlBodyField<JRXml> {
-
-    public JRXmlTitle(JRXml parentElement) {
+public class JRXmlDetail extends JRXmlBodyField<JRXml> {
+    public JRXmlDetail(JRXml parentElement) {
         super(parentElement);
-        jrXmlWriteHelper.startElement("title");
+        jrXmlWriteHelper.startElement("detail");
     }
 
     @Override
@@ -16,6 +15,7 @@ public class JRXmlTitle extends JRXmlBodyField<JRXml> {
         return new JRXmlBandBuilder(this);
     }
 
+    @Override
     public JRXml build() {
         try {
             jrXmlWriteHelper.closeElement();
@@ -24,5 +24,4 @@ public class JRXmlTitle extends JRXmlBodyField<JRXml> {
         }
         return parentElement;
     }
-
 }

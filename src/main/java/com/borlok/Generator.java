@@ -3,12 +3,15 @@ package com.borlok;
 import java.io.*;
 import java.util.*;
 
+import com.borlok.talpareport.JRReport;
 import com.borlok.talpareport.JRXmlBuilder;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.type.HorizontalTextAlignEnum;
 import net.sf.jasperreports.engine.type.ModeEnum;
-import net.sf.jasperreports.engine.type.VerticalTextAlignEnum;
+import net.sf.jasperreports.engine.type.SplitTypeEnum;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import javax.swing.*;
 
@@ -37,72 +40,103 @@ public class Generator {
 
         JRXmlBuilder.builder()
                 .setPathForJRXlmSave(pathToPattern)
-                                .addHeaderBuilder().builder()
-                                                .addReportName("Talpa")
-                                                .addColumnCount(3)
-                                                .addLeftMargin(20)
-                                                .addRightMargin(10)
-                                                .addTopMargin(10)
-                                                .addBottomMargin(10)
-                                                .addColumnWidth(178)
-                                                .addColumnSpacing(5)
-                                .build()
-                                .addStyleBuilder().builder()
-                                                .addName("Default")
-                                                .addIsDefault(true)
-                                .build()
+                .addHeader().builder()
+                .addReportName("Talpa")
+                .addColumnCount(3)
+                .addLeftMargin(20)
+                .addRightMargin(10)
+                .addTopMargin(10)
+                .addBottomMargin(10)
+                .addColumnWidth(178)
+                .addColumnSpacing(5)
+                .build()
+                .addStyle().builder()
+                .addName("Default")
+                .addIsDefault(true)
+                .build()
                 .addParameter("TITLE", String.class)
                 .addParameter("NAME", String.class)
                 .addParameter("DISCIPLINE", String.class)
-                .addParameter("ABSENCE", Integer.class)
+                .addParameter("ABSENCE", String.class)
                 .addField("name", String.class)
                 .addField("discipline", String.class)
                 .addField("absence", Integer.class)
-                .addTitleBuilder().builder()
-                                .addBandBuilder().builder()
-                                                .addBandSettingBuilder().builder()
-                                                .build()
-                                                .addTextFieldBuilder().builder()
-                                                                .addReportElementBuilder().builder()
-                                                                                .addX(0).addY(0).addWidth(555).addHeight(20)
-                                                                .build()
-                                                                .addTextElementBuilder().builder()
-                                                                                .addTextElementSettingBuilder().builder()
-                                                                                .addTextAlignment(HorizontalTextAlignEnum.CENTER)
-                                                                .build()
-                                                .build()
-                                                .addTextFieldExpressionBuilder().builder()
-                                                                .addCDATAParameter("TITLE")
-                                                .build()
-                                .build()
-               .build()
+                .addTitle().builder()
+                    .addBand().builder()
+                        .addBandSetting().builder().addHeight(20).build()
+                        .addTextField().builder()
+                            .addReportElement().builder().addX(0).addY(0).addWidth(555).addHeight(20)
+                            .build()
+                            .addTextElement().builder()
+                                .addTextElementSetting().builder().addTextAlignment(HorizontalTextAlignEnum.CENTER).build()
+                            .build()
+                            .addTextFieldExpression().builder().addCDATAParameter("TITLE").build()
+                        .build()
+                    .build()
                 .build()
-                .addColumnHeaderBuilder().builder()
-                .addBandBuilder().builder()
-                .addBandSettingBuilder().builder()
-                .addHeight(20)
+
+                .addColumnHeader().builder()
+                .addBand().builder().addBandSetting().builder().addHeight(20).build()
+
+                .addTextField().builder()
+                .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(0).addY(0).addWidth(555).addHeight(20).build()
+                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
+                .addTextFieldExpression().builder().addCDATAParameter("NAME").build()
                 .build()
-                .addTextFieldBuilder().builder()
-                .addReportElementBuilder().builder().addX(0).addY(0).addMode(ModeEnum.OPAQUE).addWidth(183).addHeight(20)
-                .addBackcolor("#f8f8f8").build()
-                .addBoxBuilder().builder()
-                .addBoxPenBuilder().builder()
-                .addLineWidth(1).build().build()
-                .addTextElementBuilder().builder()
-                .addTextElementSettingBuilder().builder()
-                .addTextAlignment(HorizontalTextAlignEnum.CENTER)
-                .addVerticalAlignment(VerticalTextAlignEnum.MIDDLE).build()
-                .addFontBuilder().builder()
-                .addIsBold(true).build()
+
+                .addTextField().builder()
+                .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(183).addY(0).addWidth(555).addHeight(20).build()
+                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
+                .addTextFieldExpression().builder().addCDATAParameter("DISCIPLINE").build()
                 .build()
-                .addTextFieldExpressionBuilder().builder()
-                .addCDATAParameter("NAME").build()
+
+                .addTextField().builder()
+                .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(366).addY(0).addWidth(555).addHeight(20).build()
+                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
+                .addTextFieldExpression().builder().addCDATAParameter("ABSENCE").build()
+                .build()
+
                 .build()
                 .build()
+
+                .addDetail().builder()
+                .addBand().builder()
+                .addBandSetting().builder().addHeight(20).addSplitType(SplitTypeEnum.STRETCH).build()
+                .addTextField().builder()
+                .addReportElement().builder().addX(183).addY(0).addWidth(183).addHeight(20).build()
+                .addBox().builder()
+                .addPen().builder().addLineWidth(1).build()
                 .build()
+                .addTextElement().builder().addTextElementSetting().builder().addTextAlignment(HorizontalTextAlignEnum.CENTER).build()
+                .build()
+                .addTextFieldExpression().builder().addCDATAField("discipline").build()
+                .build()
+                .addTextField().builder()
+                .addReportElement().builder().addX(0).addY(0).addWidth(183).addHeight(20).build()
+                .addBox().builder()
+                .addPen().builder().addLineWidth(1.0).build()
+                .build()
+                .addTextElement().builder().addTextElementSetting().builder().addTextAlignment(HorizontalTextAlignEnum.CENTER).build()
+                .build()
+                .addTextFieldExpression().builder().addCDATAField("name").build()
+                .build()
+                .addTextField().builder()
+                .addReportElement().builder().addX(366).addY(0).addWidth(183).addHeight(20).build()
+                .addBox().builder()
+                .addPen().builder().addLineWidth(1).build()
+                .build()
+                .addTextElement().builder().addTextElementSetting().builder().addTextAlignment(HorizontalTextAlignEnum.CENTER).build()
+                .build()
+                .addTextFieldExpression().builder().addCDATAField("absence").build()
+                .build()
+                .build()
+                .build()
+
                 .build();
 
-//        JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+
+
+//        JasperDesign jasperDesign = JRXmlLoader.load(to);
 //        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 //        JasperPrint jasperPrint =  JasperFillManager.fillReport(jasperReport,parameters,beanColDataSource);
 //

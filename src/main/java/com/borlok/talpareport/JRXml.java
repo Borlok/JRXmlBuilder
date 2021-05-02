@@ -25,11 +25,11 @@ public class JRXml {
         return this;
     }
 
-    public JRXmlHeaderBuilder addHeaderBuilder() {
+    public JRXmlHeaderBuilder addHeader() {
         return new JRXmlHeaderBuilder(this);
     }
 
-    public JRXmlStyleBuilder addStyleBuilder() {
+    public JRXmlStyleBuilder addStyle() {
         return new JRXmlStyleBuilder(this);
     }
 
@@ -57,12 +57,16 @@ public class JRXml {
         return this;
     }
 
-    public JRXmlTitleBuilder addTitleBuilder() {
+    public JRXmlTitleBuilder addTitle() {
         return new JRXmlTitleBuilder(this);
     }
 
-    public JRXmlColumnHeaderBuilder addColumnHeaderBuilder() {
+    public JRXmlColumnHeaderBuilder addColumnHeader() {
         return new JRXmlColumnHeaderBuilder(this);
+    }
+
+    public JRXmlDetailBuilder addDetail() {
+        return new JRXmlDetailBuilder(this);
     }
 
     public JRXml toJRXml() {

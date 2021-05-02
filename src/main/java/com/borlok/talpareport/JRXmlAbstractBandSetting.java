@@ -17,12 +17,12 @@ public abstract class JRXmlAbstractBandSetting<T> {
     }
 
     public JRXmlAbstractBandSetting<T> addIsSplitAllowed(boolean isSplitAllowed) {
-        jrXmlWriteHelper.addAttribute("height", isSplitAllowed);
+        jrXmlWriteHelper.addAttribute("isSplitAllowed", isSplitAllowed);
         return this;
     }
 
     public JRXmlAbstractBandSetting<T> addSplitType(SplitTypeEnum splitType) {
-        jrXmlWriteHelper.addAttribute("height", splitType.getName());
+        jrXmlWriteHelper.addAttribute("splitType", splitType.getName());
         return this;
     }
     public abstract T build();
