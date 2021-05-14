@@ -109,6 +109,24 @@ public class JRXml {
         return this;
     }
 
+    public void buildWithoutClose() {
+        try {
+            jrXmlWriteHelper.getUnderlyingWriter().flush();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+            if (writer == null) throw new NullPointerException("Please set path for JRXml save");
+            throw new IllegalArgumentException("Ошибка при сборе ");
+        } finally {
+            try {
+                if (writer != null)
+                    writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
     public void build() {
         try {
             if (!isCreated) {

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Talpa">
+	<style name="Default" isDefault="true"/>
+	<parameter name="Key2" class="java.lang.String"/>
+	<parameter name="Key1" class="java.lang.String"/>
+	<parameter name="Key3" class="java.lang.Boolean"/>
+	<field name="Key2" class="java.lang.String"/>
+	<field name="Key1" class="java.lang.String"/>
+	<field name="Key3" class="java.lang.Boolean"/>
+	<columnHeader>
+		<band height="20">
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="0" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$P{Key1}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="183" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$P{Key2}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="366" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$P{Key3}]]>
+				</textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="0" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$F{Key1}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="183" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$F{Key2}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" backcolor="#F8F8F8" x="366" y="0" width="555" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression>
+					<![CDATA[$F{Key3}]]>
+				</textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
