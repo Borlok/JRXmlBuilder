@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Talpa">
-	<style name="Default" isDefault="true"/>
-	<parameter name="Key2" class="java.lang.String"/>
-	<parameter name="Key1" class="java.lang.String"/>
-	<parameter name="Key3" class="java.lang.Boolean"/>
-	<field name="Key2" class="java.lang.String"/>
-	<field name="Key1" class="java.lang.String"/>
-	<field name="Key3" class="java.lang.Boolean"/>
+	<style name="Default" isDefault="true" pdfEncoding="Cp1251" pdfFontName="arial.ttf"/>
+	<parameter name="DISCIPLINE" class="java.lang.String"/>
+	<parameter name="TITLE" class="java.lang.String"/>
+	<parameter name="ABSENCE" class="java.lang.String"/>
+	<parameter name="NAME" class="java.lang.String"/>
+	<field name="absence" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="discipline" class="java.lang.String"/>
 	<columnHeader>
 		<band height="20">
 			<textField>
@@ -15,7 +16,7 @@
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression>
-					<![CDATA[$P{Key1}]]>
+					<![CDATA[$P{NAME}]]>
 				</textFieldExpression>
 			</textField>
 			<textField>
@@ -24,7 +25,7 @@
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression>
-					<![CDATA[$P{Key2}]]>
+					<![CDATA[$P{DISCIPLINE}]]>
 				</textFieldExpression>
 			</textField>
 			<textField>
@@ -33,7 +34,7 @@
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression>
-					<![CDATA[$P{Key3}]]>
+					<![CDATA[$P{ABSENCE}]]>
 				</textFieldExpression>
 			</textField>
 		</band>
@@ -43,28 +44,28 @@
 			<textField>
 				<reportElement mode="Opaque" backcolor="#F8F8F8" x="0" y="0" width="555" height="20"/>
 				<textElement>
-					<font isBold="true"/>
+					<font/>
 				</textElement>
 				<textFieldExpression>
-					<![CDATA[$F{Key1}]]>
+					<![CDATA[$F{name}]]>
 				</textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" backcolor="#F8F8F8" x="183" y="0" width="555" height="20"/>
 				<textElement>
-					<font isBold="true"/>
+					<font/>
 				</textElement>
 				<textFieldExpression>
-					<![CDATA[$F{Key2}]]>
+					<![CDATA[$F{discipline}]]>
 				</textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" backcolor="#F8F8F8" x="366" y="0" width="555" height="20"/>
 				<textElement>
-					<font isBold="true"/>
+					<font/>
 				</textElement>
 				<textFieldExpression>
-					<![CDATA[$F{Key3}]]>
+					<![CDATA[$F{absence}]]>
 				</textFieldExpression>
 			</textField>
 		</band>

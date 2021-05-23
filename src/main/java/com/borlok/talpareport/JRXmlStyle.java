@@ -24,6 +24,11 @@ public class JRXmlStyle {
         return this;
     }
 
+    public JRXmlStyle addFontName(String fontName) {
+        jrXmlWriteHelper.addAttribute("fontName", fontName);
+        return this;
+    }
+
     public JRXmlStyle addFontSize(Integer fontSize) {
         jrXmlWriteHelper.addAttribute("fontSize", fontSize);
         return this;
@@ -36,6 +41,11 @@ public class JRXmlStyle {
 
     public JRXmlStyle addPdfFontName(String pathToFont) {
         jrXmlWriteHelper.addAttribute("pdfFontName", pathToFont);
+        return this;
+    }
+
+    public JRXmlStyle addIsPdfEmbedded (boolean isPdfEmbedded) {
+        jrXmlWriteHelper.addAttribute("isPdfEmbedded", isPdfEmbedded);
         return this;
     }
 

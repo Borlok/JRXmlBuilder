@@ -66,7 +66,7 @@ public class Generator {
         mapFields.put("Key3", Boolean.class);
 
         Collection<Map<String, ?>> collection = new ArrayList<>();
-        collection.add(map);
+        collection.add(parameters);
         JRMapCollectionDataSource jrMapCollectionDataSource = new JRMapCollectionDataSource(collection);
 
         JRXmlBuilder.builder()
@@ -77,28 +77,31 @@ public class Generator {
                 .addStyle().builder()
                 .addName("Default")
                 .addIsDefault(true)
+                .addPdfEncoding("Cp1251")
+                .addPdfFontName("arial.ttf")
                 .build()
-                .addParameters(mapParameters)
-                .addFields(mapFields)
+                .addParameters(parametersMap)
+                .addFields(fieldsMap)
                 .addColumnHeader().builder().addBand().builder()
                 .addBandSetting().builder().addHeight(20).build()
 
                 .addTextField().builder()
                 .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(0).addY(0).addWidth(555).addHeight(20).build()
-                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
-                .addTextFieldExpression().builder().addCDATAParameter("Key1").build()
+                .addTextElement().builder().addFont().builder()
+                .addIsBold(true).build().build()
+                .addTextFieldExpression().builder().addCDATAParameter("NAME").build()
                 .build()
 
                 .addTextField().builder()
                 .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(183).addY(0).addWidth(555).addHeight(20).build()
                 .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
-                .addTextFieldExpression().builder().addCDATAParameter("Key2").build()
+                .addTextFieldExpression().builder().addCDATAParameter("DISCIPLINE").build()
                 .build()
 
                 .addTextField().builder()
                 .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(366).addY(0).addWidth(555).addHeight(20).build()
                 .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
-                .addTextFieldExpression().builder().addCDATAParameter("Key3").build()
+                .addTextFieldExpression().builder().addCDATAParameter("ABSENCE").build()
                 .build()
 
                 .build().build()
@@ -108,20 +111,20 @@ public class Generator {
 
                 .addTextField().builder()
                 .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(0).addY(0).addWidth(555).addHeight(20).build()
-                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
-                .addTextFieldExpression().builder().addCDATAField("Key1").build()
+                .addTextElement().builder().addFont().builder().build().build()
+                .addTextFieldExpression().builder().addCDATAField("name").build()
                 .build()
 
                 .addTextField().builder()
                 .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(183).addY(0).addWidth(555).addHeight(20).build()
-                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
-                .addTextFieldExpression().builder().addCDATAField("Key2").build()
+                .addTextElement().builder().addFont().builder().build().build()
+                .addTextFieldExpression().builder().addCDATAField("discipline").build()
                 .build()
 
                 .addTextField().builder()
                 .addReportElement().builder().addMode(ModeEnum.OPAQUE).addBackcolor("#F8F8F8").addX(366).addY(0).addWidth(555).addHeight(20).build()
-                .addTextElement().builder().addFont().builder().addIsBold(true).build().build()
-                .addTextFieldExpression().builder().addCDATAField("Key3").build()
+                .addTextElement().builder().addFont().builder().build().build()
+                .addTextFieldExpression().builder().addCDATAField("absence").build()
                 .build()
 
                 .build().build()
@@ -133,7 +136,7 @@ public class Generator {
 
             JasperDesign jasperDesign = JRXmlLoader.load(to);
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, jrMapCollectionDataSource);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanColDataSource);
 
             JRReport jrReport = new JRReport(jasperPrint);
             jrReport.createReport();
